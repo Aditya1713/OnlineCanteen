@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "758937206664",
+    "project_id": "nightcanteen-2482f",
+    "storage_bucket": "nightcanteen-2482f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758937206664:android:126e25b03116f10f63443d",
+        "android_client_info": {
+          "package_name": "com.example.night_canteen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758937206664-pgncrqloi9sgi9pchr43j1s52ub57q41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcNBy54H-bvcj1TCxvPeQa0V9Hg6_HvIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758937206664-pgncrqloi9sgi9pchr43j1s52ub57q41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
