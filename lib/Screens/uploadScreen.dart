@@ -83,128 +83,119 @@ class _UploadScreenState extends State<UploadScreen> {
         ),
         body: Container(
           color: Colors.grey,
-
-          child: Column(
+          child: Stack(
             children: [
-              Expanded(child: Row(
-                 children: [
-                   Expanded(child: Image(image: AssetImage("assets/images/pic1.jpg"),
-                     fit: BoxFit.fill,
-                   ),)
-                 ],
-              ),
-                flex: 1,
-              ),
-               Expanded(flex: 3,
-                 child:  Container(
-                 decoration: BoxDecoration(
-                   color: Colors.grey[100],
-                   borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
-                 ),
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Column(
-                        children: [
-                          SizedBox(height: 20,),
-                          TextFormField(cursorColor: Colors.yellowAccent,
-                            decoration: InputDecoration(
-                              labelText: "Enter the item name",
+             Image(image: AssetImage("assets/images/pic1.jpg")),
 
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black87, width: 2.0,style: BorderStyle.solid),borderRadius: BorderRadius.all(Radius.circular(10)),
-                              ),
-                              border: OutlineInputBorder(),
-
-                            ),
-                            controller: textEditingController,
-                          ),
-                          SizedBox(height: 20,),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                labelText: "Enter the price",
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black87, width: 2.0,style: BorderStyle.solid),borderRadius: BorderRadius.all(Radius.circular(10))
-
-                                ),
-                                border: OutlineInputBorder()
-                            ),controller: priceEditingController,
-                          ),
-                          SizedBox(height: 20,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SizedBox(width: 10,),
-                              Container(height: 150,width: 100,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black87,width: 2),
-                                  ),
-                                  child: Expanded(
-                                      child: file1!=null?Image.file(File(file1!.path),width: 100 ,height: 150): Icon(Icons.image_search_outlined))
-                              ),
-                              SizedBox(width: 10,),
-                              Container(height: 150,width: 100,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black87,width: 2),
-                                  ),
-                                  child: Expanded(
-                                      child: file2!=null?Image.file(File(file2!.path),width: 100 ,height: 150): Icon(Icons.image_search_outlined))
-                              ),
-                              SizedBox(width: 10,),
-                              Container(height: 150,width: 100,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black87,width: 2),
-                                  ),
-                                  child: Expanded(
-                                      child: file3!=null?Image.file(File(file3!.path),width: 100 ,height: 150): Icon(Icons.image_search_outlined))
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: IconButton(onPressed: () {getImage(1);},
-                                    icon: Icon(Icons.add,color: Colors.black87)
-                                ),
-                              ),
-                              Expanded(child: IconButton(onPressed: () {getImage(2);},
-                                  icon: Icon(Icons.add,color: Colors.black87)
-                              ),),
-                              Expanded(
-                                child: IconButton(onPressed: () {getImage(3);},
-                                    icon: Icon(Icons.add,color: Colors.black87,)
-                                ),
-                              ),
-
-                            ],
-                          ),
-
-                          ElevatedButton(
-                            onPressed: () async{
-
-                              for(int i=0;i<imageList.length;i++){
-                                uploadFile(imageList[i]);
-
-                              }
-                              await FirebaseFirestore.instance.collection("Users").add({
-                                "ItemName":textEditingController.text.trim(),
-                                "Price":int.parse(priceEditingController.text.trim()),
-                                "img1":urls[0],
-                                "img2":urls[1],
-                                "img3":urls[2],
-                              });
-                            }, child: Text("Upload"),
-
-                          )
-                        ],
-
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0.0,200,0,0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[100],
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
                       ),
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Column(
+                            children: [
+                              SizedBox(height: 20,),
+                              TextFormField(cursorColor: Colors.grey,
+                                decoration: InputDecoration(
+                                  labelText: "Enter the item name",
+
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black87, width: 2.0,style: BorderStyle.solid),borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  border: OutlineInputBorder(),
+
+                                ),
+                                controller: textEditingController,
+                              ),
+                              SizedBox(height: 20,),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                    labelText: "Enter the price",
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.black87, width: 2.0,style: BorderStyle.solid),borderRadius: BorderRadius.all(Radius.circular(10))
+
+                                    ),
+                                    border: OutlineInputBorder()
+                                ),controller: priceEditingController,
+                              ),
+                              SizedBox(height: 20,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  SizedBox(width: 10,),
+                                  Container(height: 150,width: 100,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black87,width: 2),
+                                      ),
+                                      child: file1!=null?Image.file(File(file1!.path),width: 100 ,height: 150): Icon(Icons.image_search_outlined)
+                                  ),
+                                  SizedBox(width: 10,),
+                                  Container(height: 150,width: 100,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black87,width: 2),
+                                      ),
+                                      child: file2!=null?Image.file(File(file2!.path),width: 100 ,height: 150): Icon(Icons.image_search_outlined)
+                                  ),
+                                  SizedBox(width: 10,),
+                                  Container(height: 150,width: 100,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black87,width: 2),
+                                      ),
+                                      child: file3!=null?Image.file(File(file3!.path),width: 100 ,height: 150): Icon(Icons.image_search_outlined)
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: IconButton(onPressed: () {getImage(1);},
+                                        icon: Icon(Icons.add,color: Colors.black87)
+                                    ),
+                                  ),
+                                  Expanded(child: IconButton(onPressed: () {getImage(2);},
+                                      icon: Icon(Icons.add,color: Colors.black87)
+                                  ),),
+                                  Expanded(
+                                    child: IconButton(onPressed: () {getImage(3);},
+                                        icon: Icon(Icons.add,color: Colors.black87,)
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+
+                              ElevatedButton(
+                                onPressed: () async{
+
+                                  for(int i=0;i<imageList.length;i++){
+                                    uploadFile(imageList[i]);
+
+                                  }
+                                  await FirebaseFirestore.instance.collection("Users").add({
+                                    "ItemName":textEditingController.text.trim(),
+                                    "Price":int.parse(priceEditingController.text.trim()),
+                                    "img1":urls[0],
+                                    "img2":urls[1],
+                                    "img3":urls[2],
+                                  });
+                                }, child: Text("Upload"),
+
+                              )
+                            ],
+
+                          ),
+                        ),
+                      ),
+
                     ),
                   ),
-
-               ),
-               )
             ],
+
           ),
         ),
       ),

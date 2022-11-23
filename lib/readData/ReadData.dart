@@ -20,7 +20,8 @@ class ReadData extends StatelessWidget {
     String img1,img2,img3;
     return FutureBuilder<DocumentSnapshot>(
         future: users.doc(docId).get()
-        ,builder: ((context , snapshot){
+        ,builder: (
+            (context , snapshot){
 
       if(snapshot.connectionState == ConnectionState.done){//data is loaded
         Map<String,dynamic> data = snapshot.data!.data() as Map<String,dynamic>;
@@ -86,6 +87,8 @@ class ReadData extends StatelessWidget {
         );
       }
       return Text('name is loading}');
-    }));
+    }
+    )
+    );
   }
 }
